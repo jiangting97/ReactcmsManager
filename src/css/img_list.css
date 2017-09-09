@@ -1,0 +1,75 @@
+.gallery {
+    padding-top: 20px;
+    width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    display: block;
+}
+
+.image{
+    float: left;
+    width: 800px;
+    height:500px;
+}
+#container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border: 3px solid #333;
+    overflow: hidden;
+}
+.arrow {
+    position: absolute;
+    top: 250px;
+    z-index: 2;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 39px;
+    text-align: center;
+    border-radius: 80%;
+    /*color: #fff;*/
+    /*background-color: RGBA(0, 0, 0, .3);*/
+    cursor: pointer;
+}
+#container:hover .arrow {
+    display: block;
+    background-color: transparent;
+}
+#prev {
+    left: 20px;
+}
+#next {
+    right: 20px;
+}
+.message{
+    float: left;
+    width:200px;
+    border:greenyellow solid 1px;
+}
+/*.buttons{*/
+    /*position: absolute;*/
+    /*left: 250px;*/
+    /*bottom:20px;*/
+    /*z-index:2;*/
+    /*height:10px;*/
+    /*width:100px;*/
+/*}*/
+.arrow{
+    position: absolute;
+    top: 180px;
+    z-index:2;
+    display: none;
+    width:40px;
+    height:40px;
+    font-size: 36px;
+    line-height: 39px;
+    text-align: center;
+    color: #fff;
+    /*background-color: RGBA(0,0,0, 0.7);*/
+    cursor: pointer;
+}

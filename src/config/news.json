@@ -1,0 +1,74 @@
+{
+  "news": [
+    {
+      "imageName": "/images/2c670000f7ad568f42e0.jpg",
+      "comeImg":"/images/tip/4633951464.jpg",
+      "title": "《战狼2》如果票房达到30亿，吴京能分多少？",
+      "type": "其它",
+      "publishTime": "2小时前",
+      "from": "头条问答",
+      "comefrom": "头条问答",
+      "comment": "616评论",
+      "content":"今年暑假，大家万众期待的《战狼2》就要上映了，1的精彩让大家对2的期待很大，也确实是中国近年来少有的硬片，并且《战狼2》从拍摄到结束一直都有较高的话题度，一直保持着较高的热度。什么演员问题呀，一时间让大家对张翰群起而攻之，后来又传张翰换了彭于晏，女主演问题，片酬问题，又到后来中间宣传片段误用，又有官司纷争，达康书记宣传之事…………可谓是一波未平一波又起呀，但也被指过度炒作，也让很多网友对吴京职责颇多，利用别人炒作只为自己电影一直获得较高的关注度，更是一时间增加了很多黑粉最近，又有一件事又成了热点，那就是《战狼2》不在国内首映，而是跑到美国去首映！！ 于是很多网友不愿意了，很多人大加指责说“凭什么到美国首映，国产片到美国首映，崇洋媚外，还是中国人吗……”等等之类的。",
+      "index": "1"
+    },
+    {
+      "imageName": "/images/3106000b07f50c804baf.jpg",
+      "comeImg":"/images/tip/13530018be3c97513d9d.jpg",
+      "title": "你咋不上天呢？小僵尸：我已经在天上了？",
+      "type": "其它",
+      "comefrom": "头条问答",
+      "publishTime": "2小时前",
+      "from": "星闻研究社",
+      "comment": "24评论",
+      "index": "2"
+    },
+    {
+      "imageName": "/images/inews3.jpg",
+      "comeImg":"/images/tip/41100026d62068c5c71.jpg",
+      "title": "跟着微信学战法，每天3分钟，每天都能学到干货！",
+      "type": "其它",
+      "publishTime": "16评论",
+      "comefrom": "潇潇的幽默笑话",
+      "publishTime": "",
+      "comment": "16评论",
+      "index": "3"
+    },
+
+
+    {
+      "imageName": "/images/inews4.jpg",
+      "comeImg":"../../src/images/tip/d2a001745001e3139b8.jpg",
+      "title": "跟着微信学战法，每天3分钟，每天都能学到干货！",
+      "type": "其它",
+      "publishTime": "2小时前",
+      "comefrom": "新京报政事儿",
+      "publishTime": "",
+      "comment": "77评论",
+      "index": "4"
+    },
+    {
+      "imageName":"/images/2c6f0017e8aaffb5aa00.jpg",
+      "comeImg":"/images/tip/d2a001745001e3139b8.jpg",
+      "title": "郭嘉不死便无三国，郭嘉到底有多厉害？",
+      "type": "其它",
+      "publishTime": "2小时前",
+      "comefrom": "新京报政事儿",
+      "publishTime": "",
+      "comment": "77评论",
+      "index": "4"
+    },
+    {
+      "imageName": "/images/2c6f0017e8aaffb5aa00.jpg",
+      "comeImg":"/images/tip/d2a001745001e3139b8.jpg",
+      "title": "郭嘉不死便无三国，郭嘉到底有多厉害？",
+      "type": "其它",
+      "publishTime": "2小时前",
+      "comefrom": "新京报政事儿",
+      "publishTime": "",
+      "comment": "77评论",
+      "index": "4"
+    }
+  ]
+
+}

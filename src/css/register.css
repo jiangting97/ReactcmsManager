@@ -1,0 +1,9 @@
+.register{
+    margin-top: 20px;
+    /*width: 200px;*/
+}
+.register-title{
+    margin: 0 auto;
+    text-align:center;
+    font-size: 30px;
+}

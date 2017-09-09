@@ -1,0 +1,65 @@
+.y-icon{
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+.icon-img{
+    width:35px;
+    height:35px;
+    vertical-align: middle;
+}
+.share-box .share-count {
+    display: block;
+    margin-bottom: 14px;
+}
+.share-box  {
+    margin-top: 13px;
+    font-size: 16px;
+    cursor: pointer;
+    /*border: solid 1px red;*/
+    margin-left: 20px;
+}
+.share-box .share-hr {
+    background: #e8e8e8;
+    height: 1px;
+}
+.bui-icon {
+    font-family: tticons!important;
+    font-size: 12px;
+    display: inline-block;
+    line-height: 1;
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*---------------------------------middle*/
+.middlebar {
+    position: relative;
+    height: 50px;
+    background: #fff;
+    line-height: 60px;
+    vertical-align: middle;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.12);
+}
+
+.middlebar-inner {
+    width: 1200px!important;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+.middlebar > div{
+    text-align: center;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
+}
+
+.detail-header-bar {
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
