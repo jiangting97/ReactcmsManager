@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import {Menu, Icon, Button, Row} from 'antd';
-
 import '../../../css/main.css';
 import '../../../css/news_detail.css';
 import '../../../css/rightcontent.css';

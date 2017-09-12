@@ -1,9 +1,3 @@
-/**
- * Created by lijian on 2017/8/5.
- */
-/**
- * Created by lijian on 2017/7/23.
- */
 import React from 'react';
 import {Row, Col, Input, Button} from 'antd';
 import data from '../../../config/news24.json';

@@ -1,6 +1,3 @@
-/**
- * Created by lijian on 2017/7/23.
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Menu, Icon, Button, Col, Row} from 'antd';

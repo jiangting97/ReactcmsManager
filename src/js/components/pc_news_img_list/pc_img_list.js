@@ -1,9 +1,5 @@
-/**
- * Created by lijian on 2017/8/5.
- */
-
 import React from 'react';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import NewsDetailHeader from '../pnews_header';
 import { Link} from 'antd';
 import data from "../../../config/imageList.json";

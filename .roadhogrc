@@ -1,0 +1,7 @@
+"theme": {
+  "primary-color": "#1DA57A",
+  "ant-menu-item" :{
+        font-size:18px,
+        padding:13px 16px
+  }
+}

@@ -3,40 +3,41 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path')
 var config = {
     context: __dirname,
-    entry:'./src/js/root.js',
-    output:{
-        path:__dirname,
-        filename:'bundle.js'
+    entry: './src/js/root.js',
+    output: {
+        path: __dirname,
+        filename: 'bundle.js'
     },
-    // devServer:{
-    //     inline:true,
-    //     port:7777
-    // },
-
-    module:{
-        loaders:[
+    plugins:[
+        ["import", {"libraryName": "antd", "style": true}],
+    ],
+    module: {
+        loaders: [
             {
-                test:/\.js?$/,
-                exclude:/node_modules/,
-                loader:'babel-loader',
-                query:{
-                    presets:['es2015','react']
+                test: /\.js?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015', 'react']
                 }
             },
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            {
-                test: /\.less$/,exclude:/node_modules/,
-                loader: ExtractTextPlugin.extract('style', 'css!less')
-            },
+            {test: /\.css$/, loader: 'style-loader!css-loader'},
+            // {
+            //     test: /\.less$/, exclude: /node_modules/,
+            //     loader: ExtractTextPlugin.extract('style', 'css!less')
+            // },
             {
                 test: /\.json$/,
                 use: 'json-loader'
             }
-
-
+            ,
+            {
+                test: /\.less$/,
+                loaders: ['style-loader', 'css-loader', 'less-loader'],
+            }
         ]
     },
-    plugins:[
+    plugins: [
         new ExtractTextPlugin("[name].css")
     ]
 }

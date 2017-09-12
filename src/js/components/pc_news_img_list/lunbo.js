@@ -1,8 +1,3 @@
-/**
- * Created by lijian on 2017/8/7.
- */
-
-
 import React from 'react';
 import data from "../../../config/imageList.json";
 export default class Imagess extends React.Component {

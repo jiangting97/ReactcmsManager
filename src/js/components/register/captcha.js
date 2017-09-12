@@ -1,6 +1,3 @@
-/**
- * Created by lijian on 2017/8/13.
- */
 import  React from 'react';
 import PropTypes from 'prop-types';
 import {Input, Button} from 'antd';

@@ -1,9 +1,5 @@
-/**
- * Created by lijian on 2017/7/30.
- */
 import React from 'react';
 import {Col, Row, Button, Input} from "antd";
-
 import '../../css/news_detail.css';
 import '../../css/main.css';
 import '../../css/img_list.css';

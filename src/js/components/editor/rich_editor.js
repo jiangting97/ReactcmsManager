@@ -287,7 +287,7 @@ export default class RichEditorExample extends React.Component {
                                 blockRendererFn={mediaBlockRenderer}
                                 blockStyleFn={getBlockStyle}
                                 customStyleMap={styleMap}
-                                customStyleMap={colorStyleMap}
+                                // customStyleMap={colorStyleMap}
                                 editorState={editorState}
                                 handleKeyCommand={this.handleKeyCommand}
                                 onChange={this.onChange}
