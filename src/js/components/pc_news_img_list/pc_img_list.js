@@ -3,6 +3,7 @@ import 'antd/dist/antd.less';
 import NewsDetailHeader from '../pnews_header';
 import { Link} from 'antd';
 import data from "../../../config/imageList.json";
+import Header from '../header';
 
 import '../../../css/img_list.css';
 export default class ImageList extends React.Component {
@@ -60,7 +61,7 @@ export default class ImageList extends React.Component {
         return (
 
             <div>
-                <NewsDetailHeader/>
+                <Header/>
                 <div className="gallery">
                     <div id="container">
                         <div style={styles.imagebox}>

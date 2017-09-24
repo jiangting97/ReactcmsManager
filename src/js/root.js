@@ -18,7 +18,7 @@ export default class Root extends React.Component {
                     <Route path="/detail/:id" component={NewsDetail}/>
                     <Route path="/rich" component={RichEditorExample}/>
                     <Route path="/register" component={WrappedRegistrationForm}/>
-                    <Route path="/editor" component={RichEditorExample}/>
+                    <Route path="/editor" component={DraftEditor}/>
                     <Route path="/imgLIst/:id" component={ImageList}/>
                     <Route path="/manager" component={Manager}/>
                 </div>

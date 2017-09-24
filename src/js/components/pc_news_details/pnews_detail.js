@@ -12,12 +12,13 @@ import '../../../css/main.css';
 import '../../../css/news_detail.css';
 import '../../../css/rightcontent.css';
 import '../../../css/register.css';
+import Header from '../header';
 export default class NewsDetail extends React.Component {
 
     render() {
         return (
             <div>
-                <NewsDetailHeader/>
+                <Header/>
                 <div className="content">
                     <Row>
                         <Col span={3} > <PNewsDetailLeft/></Col>

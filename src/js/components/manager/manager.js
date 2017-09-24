@@ -1,11 +1,16 @@
 import React from 'react';
 import {Layout, Menu, Breadcrumb} from 'antd';
 import {Table, Input, Icon, Button, Popconfirm} from 'antd';
+
 const {Header, Footer, Sider, Content} = Layout;
 import {Tabs, Radio} from 'antd';
-const TabPane = Tabs.TabPane;
+import {Link, Route, Router, BrowserRouter} from "react-router-dom";
 
+
+const TabPane = Tabs.TabPane;
 import {DraftEditor} from './draft_editor';
+
+
 export default class Manager extends React.Component {
     constructor() {
         super();
@@ -20,36 +25,39 @@ export default class Manager extends React.Component {
     }
 
     componentWillMount() {
-        console.log("menu key = "+this.state.menuKey);
+        console.log("menu key = " + this.state.menuKey);
     }
-    toggle() {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-    };
+
+    // toggle() {
+    //     this.setState({
+    //         collapsed: !this.state.collapsed,
+    //     });
+    // };
 
     handleModeChang(e) {
         const mode = e.target.value;
         this.setState({mode});
     }
+
     handlClick(e) {
         const a = e;
         console.log("e" + e);
         console.log("e" + e.key);
         this.setState({
-           menuKey : e.key
+            menuKey: e.key
         });
 
     }
+
     render() {
         const {mode} = this.state;
-        let  content;
-        if(this.state.menuKey === '1') {
+        let content;
+        if (this.state.menuKey === '1') {
             content = <Table rowSelection={rowSelection} columns={columns} pagination={{pageSize: 5}}
-                                    dataSource={data}/>;
-        } else if(this.state.menuKey === '2') {
+                             dataSource={data}/>;
+        } else if (this.state.menuKey === '2') {
             content = <DraftEditor/>
-        } else if(this.state.menuKey === '3') {
+        } else if (this.state.menuKey === '3') {
             content = <div>three</div>
         }
         return (
@@ -59,25 +67,29 @@ export default class Manager extends React.Component {
                         <div className="logo">
                             后台管理系统
                         </div>
+
+
                     </Header>
-                    <Layout>
+                    <Layout className={{width: "80%"}}>
                         <Sider
                             trigger={null}
                             collapsed={this.state.collapsed}
                         >
                             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} onClick={this.handlClick}>
-                                <Menu.Item key="1" >
+                                <Menu.Item key="1">
                                     <span>显示博文</span>
                                 </Menu.Item>
                                 <Menu.Item key="2">
-                                    <span>添加文章</span>
+                                    {/*<Link to={`/editor`}>*/}
+                                        <span>添加文章</span>
+                                    {/*</Link>*/}
                                 </Menu.Item>
                                 <Menu.Item key="3">
                                     <span>图集管理</span>
                                 </Menu.Item>
                             </Menu>
                         </Sider>
-                        <Content>
+                        <Content >
                             {content}
                         </Content>
                     </Layout>

@@ -26,22 +26,22 @@ export default class SideBar extends React.Component {
             <div className="left-channel channel-fixed" id="channel"  ref="myTextInput" >
                 <Row>
                     <Col >
-                        <a href="/" className="logo">
-                        <img className="logo-img" src="/images/logo_201f80d.png"></img> </a>
+                        <a href="/" className="logotext">准提心脉</a>
+                        {/*<img className="logo-img" src="/images/logo_201f80d.png"></img> </a>*/}
                     </Col>
                 </Row>
-                <Row><Col> <a className="channel-item channel-item-selected"> 推荐 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 视频 </a> </Col> </Row>
-                <Row><Col> <a className="channel-item"> 图片 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 段子 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 社会 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 娱乐 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 科技 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 体育 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 汽车 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 财经 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 搞笑 </a> </Col></Row>
-                <Row><Col> <a className="channel-item"> 更多 </a> </Col></Row>
+                <Row><Col> <a className="channel-item channel-item-selected"> 传承 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 网站公告 </a> </Col> </Row>
+                <Row><Col> <a className="channel-item"> 新闻资讯 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 菩提心路 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 学习资料 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 大乘讲堂 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 法会报名 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 联系我们 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 苏悉地 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 吉祥金刚文集 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 密海寻珍 </a> </Col></Row>
+                <Row><Col> <a className="channel-item"> 法物流通 </a> </Col></Row>
             </div>
         );
     }

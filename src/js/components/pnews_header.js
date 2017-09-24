@@ -1,15 +1,13 @@
 import React from 'react';
 import {Col, Row, Button, Input} from "antd";
-import '../../css/news_detail.css';
 import '../../css/main.css';
-import '../../css/img_list.css';
 export default class NewsDetailHeader extends React.Component {
 
     render() {
         return (
             <div>
                 <div>
-                    <Row >
+
                         <div className="news-detail-header">
                             <Col span={1}> <a className="header-bar"> 推荐 </a> </Col>
                             <Col span={1}> <a className="header-bar"> 热点 </a> </Col>
@@ -34,7 +32,6 @@ export default class NewsDetailHeader extends React.Component {
                             <Col span={1}> <a className="header-bar"> 侵权投诉</a> </Col>
                             <Col span={1}> <a className="header-bar"> 头条产品</a></Col>
                         </div>
-                    </Row>
                 </div>
                 {/*<Row className="middlebar">*/}
                     {/*<div className="detail-header-bar">*/}

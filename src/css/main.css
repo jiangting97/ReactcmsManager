@@ -10,7 +10,8 @@ body{
     color: #ffffff;
     font-style: normal;
     height: 50px;
-    line-height: 50px;
+    width:100%;
+    line-height: 60px;
     margin-bottom: 10px;
     font-size: 18px;
 }
@@ -25,7 +26,7 @@ body{
 .header-bar {
     color: white;
     font-size:14px;
-    line-height: 30px;
+    line-height: 50px;
     color: #ffffff;
 }
 .header-bar:hover{
@@ -56,6 +57,14 @@ body{
     width:100px;
     height:27px;
     margin-bottom: 20px;
+}
+.logotext{
+    color: #ff0000;
+    font-size:18px;
+    line-height: 30px;
+}
+.logotext:hover{
+    color:#ff0000;
 }
 .channel-item {
     display: block;
