@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {convertFromRaw} from 'draft-js';
-import {Editor} from 'react-draft-wysiwyg';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
+// import {EditorState, convertToRaw, ContentState, convertFromRaw} from 'draft-js';
 import '../../../css/editor.css'
-import {Button} from 'antd';
-import {Input} from 'antd';
+import {Input, Button} from 'antd';
+
+import {EditorState, convertToRaw, ContentState} from 'draft-js';
+import {Editor} from 'react-draft-wysiwyg';
+
 
 const content = {
     "entityMap": {},
@@ -24,13 +25,13 @@ const content = {
 export class DraftEditor extends Component {
     constructor(props) {
         super(props);
-        const editorState = convertFromRaw(content);
+        // const editorState = convertFromRaw(content);
         this.state = {
-            editorState,
+            editorState: EditorState.createEmpty(),
             title: '',
-            uploadedImages:[],
+            uploadedImages: [],
         }
-        this.onContentStateChange = (contentState) => this.setState({contentState});
+        this.onEditorStateChange = (editorState) => this.setState({editorState});
         this.handlePublish = this.handlePublish.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -46,19 +47,28 @@ export class DraftEditor extends Component {
     }
 
     handlePublish() {
-        console.log(this.state.title);
-        console.log(this.state.contentState)
+        const {editorState} = this.state;
+        console.log("tittle" + this.state.title);
+        console.log("content" + this.state.editorState);
+        console.log(editorState);
+        console.log()
+        const content = this.state.editorState.getCurrentContent();
+        console.log(convertToRaw(content));
+
+        console.log(JSON.stringify(convertToRaw(content)));
+
+
+        // console.log(convertToRaw(content));
+        // let blog = {
+        //     title: this.state.title,
+        //     // article: convertToRaw(content),
+        // }
+
+        var xml = new XMLHttpRequest();
+
     }
 
     uploadImageCallBack(file) {
-        // let  imageObject = {
-        //     file : file,
-        //     localSrc: URL.createObjectURL(file)
-        // }
-        // uploadedImages.push(imageObject);
-        // this.setState({
-        //    uploadedImages:uploadedImages
-        // });
         return new Promise(
             (resolve, reject) => {
                 file.thumb = URL.createObjectURL(file);
@@ -76,12 +86,12 @@ export class DraftEditor extends Component {
                     console.log("load");
                     if (xhr.readyState == 4) {
                         if (xhr.status == 200 || xhr.status == 304) {
-                            console.log("aaaaaa================")
                             console.log("xhr.responseText = " + xhr.responseText);
                             // resolve(xhr.responseText);
-                            console.log("resolev");
-                            resolve({ data: { link: "https://p1.pstatp.com/origin/3b140000f83871dd3b04" } });
-                            console.log("resolve. finish");
+                            let imageurl = JSON.parse(xhr.responseText).imageUrl;
+                            console.log("imageurl = " + imageurl);
+
+                            resolve({data: {link: imageurl}});
                         }
                     }
                     // const response = JSON.parse(xhr.responseText);
@@ -100,29 +110,35 @@ export class DraftEditor extends Component {
         const {editorState} = this.state;
         return (
             <div className="add-articl">
-                <div>
-                    文章标题
-                </div>
-                <Input type="text" ref="title" onBlur={this.handleChange}>
-                </Input>
-                <div> 文章内容</div>
-                <Editor
-                    // editorState={editorState}
-                    wrapperClassName="demo-wrapper"
-                    editorClassName="demo-editor"
-                    onContentStateChange={this.onContentStateChange}
-                    toolbar={{
-                        image: {uploadCallback: this.uploadImageCallBack},
-                    }}
-
-                />
                 <Button type="primary" onClick={this.handlePublish}>发布</Button>
-                <Button type="primary">取消</Button>
-                {/*<textarea*/}
-                {/*disabled*/}
-                {/*value={JSON.stringify(contentState, null, 4)}*/}
-                {/*/>*/}
+
+
+                <div>
+                    <div>
+                        文章标题
+                    </div>
+                    <Input type="text" ref="title" onBlur={this.handleChange}>
+                    </Input>
+                    <div> 文章内容</div>
+
+                    <Editor
+                        editorState={editorState}
+                        wrapperClassName="demo-wrapper"
+                        editorClassName="demo-editor"
+                        onEditorStateChange={this.onEditorStateChange}
+                        toolbar={{
+                            image: {uploadCallback: this.uploadImageCallBack},
+                        }}
+                    />
+                    <Button type="primary" onClick={this.handlePublish}>发布</Button>
+                    <Button type="primary">取消</Button>
+                    <textarea
+                        disabled
+                        value={convertToRaw(editorState.getCurrentContent())}
+                    />
+                </div>
             </div>
+
         );
     }
 }
