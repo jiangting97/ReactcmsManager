@@ -1,13 +1,39 @@
 import React from 'react';
 import Header from '../header';
-import {Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
 import {Link, Route, Router, BrowserRouter} from "react-router-dom";
 import Captcha from './captcha';
+import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
 
-export default  class RegistrationForm extends React.Component {
+const residences = [{
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [{
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [{
+            value: 'xihu',
+            label: 'West Lake',
+        }],
+    }],
+}, {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [{
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [{
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+        }],
+    }],
+}];
+
+
+
+ class RegistrationForm extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -72,8 +98,8 @@ export default  class RegistrationForm extends React.Component {
     }
 
     render() {
-        const {getFieldDecorator} = this.props.form;
-        const {autoCompleteResult} = this.state;
+        const { getFieldDecorator } = this.props.form;
+        const { autoCompleteResult } = this.state;
 
         const formItemLayout = {
             labelCol: {
@@ -116,26 +142,11 @@ export default  class RegistrationForm extends React.Component {
                 <div className="register">
                     <div className="register-title">用户注册</div>
                     <Form onSubmit={this.handleSubmit}>
-
-                        {/*<FormItem label="Account">*/}
-                            {/*{*/}
-                                {/*<Input placeholder="please input the account" {...getFieldProps('userName')}/>*/}
-                            {/*}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem label="Password">*/}
-                            {/*{*/}
-                                {/*<Input type="password" placeholder="Please input the pasword" {...getFieldProps('passWord')}/>*/}
-                            {/*}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem>*/}
-                            {/*<Checkbox {...getFieldProps('agreement')}>Remember me</Checkbox>*/}
-                        {/*</FormItem>*/}
-                        {/*<Button type="primary" htmlType="submit">Submit</Button>*/}
-
                         <FormItem
                             {...formItemLayout}
-                            label="E-mail"
-                            hasFeedback>
+                            label="邮箱"
+                            hasFeedback
+                        >
                             {getFieldDecorator('email', {
                                 rules: [{
                                     type: 'email', message: 'The input is not valid E-mail!',
@@ -146,112 +157,75 @@ export default  class RegistrationForm extends React.Component {
                                 <Input />
                             )}
                         </FormItem>
-                        {/*<FormItem*/}
-                            {/*{...formItemLayout}*/}
-                            {/*label="Password"*/}
-                            {/*hasFeedback*/}
-                        {/*>*/}
-                            {/*{getFieldDecorator('password', {*/}
-                                {/*rules: [{*/}
-                                    {/*required: true, message: 'Please input your password!',*/}
-                                {/*}, {*/}
-                                    {/*validator: this.checkConfirm,*/}
-                                {/*}],*/}
-                            {/*})(*/}
-                                {/*<Input type="password"/>*/}
-                            {/*)}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem*/}
-                            {/*{...formItemLayout}*/}
-                            {/*label="Confirm Password"*/}
-                            {/*hasFeedback*/}
-                        {/*>*/}
-                            {/*{getFieldDecorator('confirm', {*/}
-                                {/*rules: [{*/}
-                                    {/*required: true, message: 'Please confirm your password!',*/}
-                                {/*}, {*/}
-                                    {/*validator: this.checkPassword,*/}
-                                {/*}],*/}
-                            {/*})(*/}
-                                {/*<Input type="password" onBlur={this.handleConfirmBlur}/>*/}
-                            {/*)}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem*/}
-                            {/*{...formItemLayout}*/}
-                            {/*label={(*/}
-                                {/*<span>*/}
-              {/*Nickname&nbsp;*/}
-                                    {/*<Tooltip title="What do you want other to call you?">*/}
-                {/*<Icon type="question-circle-o"/>*/}
-              {/*</Tooltip>*/}
-            {/*</span>*/}
-                            {/*)}*/}
-                            {/*hasFeedback*/}
-                        {/*>*/}
-                            {/*{getFieldDecorator('nickname', {*/}
-                                {/*rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],*/}
-                            {/*})(*/}
-                                {/*<Input />*/}
-                            {/*)}*/}
-                        {/*</FormItem>*/}
-            
-                        {/*<FormItem*/}
-                            {/*{...formItemLayout}*/}
-                            {/*label="Phone Number"*/}
-                        {/*>*/}
-                            {/*{getFieldDecorator('phone', {*/}
-                                {/*rules: [{required: true, message: 'Please input your phone number!'}],*/}
-                            {/*})(*/}
-                                {/*<Input addonBefore={prefixSelector} style={{width: '100%'}}/>*/}
-                            {/*)}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem*/}
-                            {/*{...formItemLayout}*/}
-                            {/*label="Website"*/}
-                        {/*>*/}
-                            {/*{getFieldDecorator('website', {*/}
-                                {/*rules: [{required: true, message: 'Please input website!'}],*/}
-                            {/*})(*/}
-                                {/*<AutoComplete*/}
-                                    {/*dataSource={websiteOptions}*/}
-                                    {/*onChange={this.handleWebsiteChange}*/}
-                                    {/*placeholder="website"*/}
-                                {/*>*/}
-                                    {/*<Input />*/}
-                                {/*</AutoComplete>*/}
-                            {/*)}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem*/}
-                            {/*{...formItemLayout}*/}
-                            {/*label="Captcha"*/}
-                            {/*extra="We must make sure that your are a human."*/}
-                        {/*>*/}
-                            {/*<Row gutter={8}>*/}
-                                {/*<Col span={12}>*/}
-                                    {/*{getFieldDecorator('captcha', {*/}
-                                        {/*rules: [{required: true, message: 'Please input the captcha you got!'}],*/}
-                                    {/*})(*/}
-                                        {/*<Input size="large"/>*/}
-                                    {/*)}*/}
-                                {/*</Col>*/}
-                                {/*<Col span={12}>*/}
-                                    {/*<Button size="large">Get captcha</Button>*/}
-                                {/*</Col>*/}
-                            {/*</Row>*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem {...tailFormItemLayout} style={{marginBottom: 8}}>*/}
-                            {/*{getFieldDecorator('agreement', {*/}
-                                {/*valuePropName: 'checked',*/}
-                            {/*})(*/}
-                                {/*<Checkbox>I have read the <a href="">agreement</a></Checkbox>*/}
-                            {/*)}*/}
-                        {/*</FormItem>*/}
-                        {/*<FormItem {...tailFormItemLayout}>*/}
-                            {/*<Button type="primary" htmlType="submit">Register</Button>*/}
-                        {/*</FormItem>*/}
+
+                        <FormItem
+                            {...formItemLayout}
+                            label="密码"
+                            hasFeedback
+                        >
+                            {getFieldDecorator('password', {
+                                rules: [{
+                                    required: true, message: 'Please input your password!',
+                                }, {
+                                    validator: this.checkConfirm,
+                                }],
+                            })(
+                                <Input type="password" />
+                            )}
+                        </FormItem>
+
+                        <FormItem
+                            {...formItemLayout}
+                            label="确认密码"
+                            hasFeedback
+                        >
+                            {getFieldDecorator('confirm', {
+                                rules: [{
+                                    required: true, message: 'Please confirm your password!',
+                                }, {
+                                    validator: this.checkPassword,
+                                }],
+                            })(
+                                <Input type="password" onBlur={this.handleConfirmBlur} />
+                            )}
+                        </FormItem>
+
+                        <FormItem
+                            {...formItemLayout}
+                            label={(
+                                <span>用户名
+                                    <Tooltip title="What do you want other to call you?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+                            )}
+                            hasFeedback
+                        >
+                            {getFieldDecorator('nickname', {
+                                rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                            })(
+                                <Input />
+                            )}
+                        </FormItem>
+
+
+                        <FormItem
+                            {...formItemLayout}
+                            label="电话号码"
+                        >
+                            {getFieldDecorator('phone', {
+                                rules: [{ required: true, message: 'Please input your phone number!' }],
+                            })(
+                                <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+                            )}
+                        </FormItem>
+
                         <FormItem {...tailFormItemLayout}>
                             <Captcha color="red"  captchaType="Calculation" size="4"/>
 
+                        </FormItem>
+                        <FormItem {...tailFormItemLayout}>
+                            <Button type="primary" htmlType="submit">注册</Button>
                         </FormItem>
                     </Form>
                 </div>
@@ -263,4 +237,3 @@ export default  class RegistrationForm extends React.Component {
 
 export const WrappedRegistrationForm = Form.create()(RegistrationForm);
 
-// export WrappedRegistrationForm;

@@ -33,25 +33,6 @@ export default class NewsDetailHeader extends React.Component {
                             <Col span={1}> <a className="header-bar"> 头条产品</a></Col>
                         </div>
                 </div>
-                {/*<Row className="middlebar">*/}
-                    {/*<div className="detail-header-bar">*/}
-                        {/*<Col span={3} className="bui-left index-content">*/}
-                            {/*<a href="/" className="logo">*/}
-                                {/*<img className="logo-img" src="/images/logo_201f80d.png"></img> </a>*/}
-                        {/*</Col>*/}
-                        {/*<Col span={4} className="detail-header-link"><a className="detail-header-link">首页</a> /*/}
-                            {/*<a className="detail-header-link">问答</a> / <a className="detail-header-link">正文</a></Col>*/}
-                        {/*<Col span={10}></Col>*/}
-                        {/*<Col span={7}>*/}
-                            {/*<div className="right-content">*/}
-                                {/*<Row className=" right-box  index-search-box">*/}
-                                    {/*<Col span={18}> <Input placeholder="大家都在搜：玻璃成靶子被击穿"/></Col>*/}
-                                    {/*<Col span={6}><Button type="primary">搜素</Button></Col>*/}
-                                {/*</Row>*/}
-                            {/*</div>*/}
-                        {/*</Col>*/}
-                    {/*</div>*/}
-                {/*</Row>*/}
             </div>
         );
     }

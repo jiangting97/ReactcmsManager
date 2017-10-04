@@ -5,7 +5,7 @@ import PCIndex from './components/pc_news_index/pc_index';
 import NewsDetail from './components/pc_news_details/pnews_detail';
 import ImageList from './components/pc_news_img_list/pc_img_list';
 import {WrappedRegistrationForm} from './components/register/register';
-import RichEditorExample from './components/editor/rich_editor';
+import RichEditorExample from './components/draft_editor_bak/rich_editor';
 import Manager from './components/manager/manager';
 import {DraftEditor} from './components/manager/draft_editor';
 

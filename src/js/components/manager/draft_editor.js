@@ -46,25 +46,66 @@ export class DraftEditor extends Component {
 
     }
 
-    handlePublish() {
+    handlePublish(e) {
+
+
         const {editorState} = this.state;
         console.log("tittle" + this.state.title);
         console.log("content" + this.state.editorState);
-        console.log(editorState);
-        console.log()
         const content = this.state.editorState.getCurrentContent();
-        console.log(convertToRaw(content));
-
         console.log(JSON.stringify(convertToRaw(content)));
 
 
-        // console.log(convertToRaw(content));
-        // let blog = {
-        //     title: this.state.title,
-        //     // article: convertToRaw(content),
-        // }
+        let  tempArticle = JSON.stringify(convertToRaw(content));
 
-        var xml = new XMLHttpRequest();
+        let blog = {
+            title: this.state.title,
+            content: JSON.stringify(convertToRaw(content)),
+            type:1,
+            category:1,
+            summary:'摘要',
+            permission: 7,
+            pub_user:'lijian',
+            edit_user:'jiangting',
+            audit_user:'shidaming',
+            stick:0
+        }
+
+
+        console.log("blog" + JSON.stringify(blog));
+
+        var xhr
+        if(window.XMLHttpRequest) {
+            xhr  = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject('Microft.XMLHttp');
+        }
+
+        xhr.open('POST', '/save-artitle');
+        xhr.setRequestHeader("Content-type","application/json");
+        // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        console.log(JSON.parse(JSON.stringify(blog)));
+        xhr.send(JSON.stringify(blog));
+
+console.log(JSON.stringify(aa));
+
+        xhr.addEventListener('load', () => {
+            console.log('publish');
+            if(xhr.readyState == 4) {
+                if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    console.log("publish success")
+                } else {
+                    console.log("publish error !!!")
+                }
+            }
+        });
+        xhr.addEventListener('error', () => {
+            console.log("publish error ====");
+        });
+
+
+
 
     }
 
@@ -134,7 +175,7 @@ export class DraftEditor extends Component {
                     <Button type="primary">取消</Button>
                     <textarea
                         disabled
-                        value={convertToRaw(editorState.getCurrentContent())}
+                        value={JSON.stringify(convertToRaw(editorState.getCurrentContent()))}
                     />
                 </div>
             </div>

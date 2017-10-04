@@ -1,6 +1,7 @@
 import React from 'react';
 import {Layout, Menu, Breadcrumb} from 'antd';
 import {Table, Input, Icon, Button, Popconfirm} from 'antd';
+import reqwest from 'reqwest';
 
 const {Header, Footer, Sider, Content} = Layout;
 import {Tabs, Radio} from 'antd';
@@ -18,21 +19,56 @@ export default class Manager extends React.Component {
             collapsed: false,
             mode: 'top',
             menuKey: '1',
+            articles: [],
+            loading: false,
         };
         this.handleModeChang = this.handleModeChang.bind(this);
         this.handlClick = this.handlClick.bind(this);
+        this.loadData = this.handlClick.bind(this);
 
     }
 
     componentWillMount() {
         console.log("menu key = " + this.state.menuKey);
     }
+    componentDidMount() {
+        this.fetchArticle();
+    }
 
-    // toggle() {
-    //     this.setState({
-    //         collapsed: !this.state.collapsed,
-    //     });
-    // };
+    fetchArticle() {
+        console.log(" fetchArticle");
+        let xhr = '';
+        if(window.XMLHttpRequest) {
+            xhr =  new XMLHttpRequest();
+
+        } else {
+            xhr = new ActiveXObject('Microft.XMLHttp');
+        }
+        xhr.open('GET', '/getArticles?aa=1&bb=2');
+        let data = {
+            start:0,
+            num: 5
+        }
+        xhr.send();
+
+        xhr.addEventListener('load', ()=> {
+            if((xhr.status >=200 && xhr.status < 300) || xhr.status == 304 ) {
+                let data = xhr.responseText;
+                console.log("xhr.response : " + JSON.parse(data).length);
+                this.setState({
+                    articles : JSON.parse(data)
+                });
+                console.log("articles = " + this.state.articles);
+            }
+        })
+
+        xhr.addEventListener('error', ()=> {
+            console.log(error)
+        })
+
+    }
+
+
 
     handleModeChang(e) {
         const mode = e.target.value;
@@ -51,10 +87,11 @@ export default class Manager extends React.Component {
 
     render() {
         const {mode} = this.state;
+        const pageSize = 10;
         let content;
         if (this.state.menuKey === '1') {
-            content = <Table rowSelection={rowSelection} columns={columns} pagination={{pageSize: 5}}
-                             dataSource={data}/>;
+            content = <Table rowSelection={rowSelection} columns={columns} pagination={{pageSize: 10}} rowKey={"id"}
+                             dataSource={this.state.articles}/>;
         } else if (this.state.menuKey === '2') {
             content = <DraftEditor/>
         } else if (this.state.menuKey === '3') {
@@ -81,7 +118,7 @@ export default class Manager extends React.Component {
                                 </Menu.Item>
                                 <Menu.Item key="2">
                                     {/*<Link to={`/editor`}>*/}
-                                        <span>添加文章</span>
+                                    <span>添加文章</span>
                                     {/*</Link>*/}
                                 </Menu.Item>
                                 <Menu.Item key="3">
@@ -89,7 +126,7 @@ export default class Manager extends React.Component {
                                 </Menu.Item>
                             </Menu>
                         </Sider>
-                        <Content >
+                        <Content>
                             {content}
                         </Content>
                     </Layout>
@@ -107,65 +144,54 @@ export default class Manager extends React.Component {
 }
 
 const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
+    title: '题目',
+    dataIndex: 'title',
     render: text => <a href="#">{text}</a>,
 }, {
-    title: 'Age',
-    dataIndex: 'age',
+    title: '摘要',
+    dataIndex: 'summary',
 }, {
-    title: 'Address',
-    dataIndex: 'address',
+    title: '分类',
+    dataIndex: 'type',
 }];
 
 const data = [{
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
+    id: '1',
+    title: 'John Brown',
+    summary: 32,
+    type: 'New York No. 1 Lake Park',
 }, {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
+    id: '2',
+    title: 'Jim Green',
+    summary: 42,
+    type: 'London No. 1 Lake Park',
 }, {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
+    id: '3',
+    title: 'Joe Black',
+    summary: 32,
+    type: 'Sidney No. 1 Lake Park',
 }, {
-    key: '4',
-    name: 'Disabled User11',
-    age: 919,
-    address: 'Sidney No. 1 Lake Park',
+    id: '4',
+    title: 'Disabled User11',
+    summary: 919,
+    type: 'Sidney No. 1 Lake Park',
 }, {
-    key: '5',
-    name: 'Disabled User1',
-    age: 9339,
-    address: 'Sidney No. 1 Lake Park',
+    id: '5',
+    title: 'Disabled User1',
+    summary: 9339,
+    type: 'Sidney No. 1 Lake Park',
 },
     {
-        key: '6',
-        name: 'Disabled User3',
-        age: 299,
-        address: 'Sidney No. 1 Lake Park',
+        id: '6',
+        title: 'Disabled User3',
+        summary: 299,
+        type: 'Sidney No. 1 Lake Park',
     },
     {
-        key: '7',
-        name: 'Disabled User4',
-        age: 919,
-        address: 'Sidney No. 1 Lake Park',
-    }, {
-        key: '8',
-        name: 'Disabled User5',
-        age: 33,
-        address: 'Sidney No. 1 Lake Park',
-    }
-    , {
-        key: '9',
-        name: 'Disabled User7',
-        age: 992,
-        address: 'Sidney No. 1 Lake Park',
+        id: '7',
+        title: 'Disabled User4',
+        summary: 919,
+        type: 'Sidney No. 1 Lake Park',
     }];
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
